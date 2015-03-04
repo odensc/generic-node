@@ -1,6 +1,6 @@
 {
   "name": "generic-node",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An implementation of a node in JavaScript.",
   "main": "index.js",
   "scripts": {
@@ -16,10 +16,6 @@
   },
   "directories": {
     "test": "test"
-  },
-  "dependencies": {
-    "babel": "^4.6.6",
-    "chai": "^2.1.0"
   },
   "repository": {
     "type": "git",
