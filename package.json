@@ -1,0 +1,17 @@
+{
+  "name": "generic-node",
+  "version": "1.0.0",
+  "description": "An implementation of a node in JavaScript.",
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "npm test && babel src --out-dir lib",
+    "test": "mocha --compilers js:babel/register"
+  },
+  "author": "Oden <oden@thesbros.me>",
+  "license": "Apache 2.0",
+  "devDependencies": {
+    "babel": "^4.6.6",
+    "chai": "^2.1.0",
+    "mocha": "^2.1.0"
+  }
+}
