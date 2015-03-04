@@ -13,5 +13,23 @@
     "babel": "^4.6.6",
     "chai": "^2.1.0",
     "mocha": "^2.1.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "babel": "^4.6.6",
+    "chai": "^2.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thesbros/generic-node.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "bugs": {
+    "url": "https://github.com/thesbros/generic-node/issues"
+  },
+  "homepage": "https://github.com/thesbros/generic-node"
 }
