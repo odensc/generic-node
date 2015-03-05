@@ -96,6 +96,7 @@ describe("Node", function()
 		{
 			var parentNode = new Node();
 			var node = new Node();
+			parentNode.add(node);
 			parentNode.remove(node);
 			should.equal(node.parent, null);
 		});
@@ -104,6 +105,7 @@ describe("Node", function()
 		{
 			var parentNode = new Node();
 			var node = new Node();
+			parentNode.add(node);
 			parentNode.on("removed", function(removedNode)
 			{
 				removedNode.should.equal(node);
@@ -118,10 +120,20 @@ describe("Node", function()
 			parentNode.remove({dummy: "object"}).should.be.false;
 		});
 
+		it("should return false if this node isn't a parent of it", function()
+		{
+			var parentNode = new Node();
+			var otherParentNode = new Node();
+			var node = new Node();
+			parentNode.add(node);
+			otherParentNode.remove(node).should.be.false;
+		});
+
 		it("should return true if everything's fine", function()
 		{
 			var parentNode = new Node();
 			var node = new Node();
+			parentNode.add(node);
 			parentNode.remove(node).should.be.true;
 		});
 	});

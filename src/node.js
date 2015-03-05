@@ -9,6 +9,8 @@ import {EventEmitter} from "events";
 export default class Node extends EventEmitter
 {
 	/**
+	* The constructor. Takes no parameters.
+	*
 	* @public
 	* @constructor
 	*/
@@ -22,7 +24,7 @@ export default class Node extends EventEmitter
 
 	/**
 	* Adds a child node to this node.
-	* If the specified node is already a child of this node it will not be re-added.
+	* If the specified node is already a child of a node it will not be added.
 	*
 	* @public
 	* @param node {Node} the node to be added
@@ -32,14 +34,14 @@ export default class Node extends EventEmitter
 	add(node)
 	{
 		// make sure the node doesn't already have a parent and is an instance of Node
-		if (node.parent || !node._isNode) return false;
+		if (!node._isNode || node.isChild()) return false;
 		// set its parent
 		node.parent = this;
 		// add it to our children
 		this.children.push(node);
 		/**
 		* Added event.
-		* Called when a node is added to this node.
+		* Emitted when a node is added to this node.
 		*
 		* @event Node#added
 		* @type {Node}
@@ -59,15 +61,15 @@ export default class Node extends EventEmitter
 	*/
 	remove(node)
 	{
-		// make sure the node is a Node
-		if (!node._isNode) return false;
+		// make sure the node is a Node and we are the parent of the node
+		if (!node._isNode || this.children.indexOf(node) === -1) return false;
 		// unset its parent
 		node.parent = null;
 		// remove the node from our children
 		this.children.splice(this.children.indexOf(node), 1);
 		/**
 		* Removed event.
-		* Called when a node is removed from this node.
+		* Emitted when a node is removed from this node.
 		*
 		* @event Node#removed
 		* @type {Node}
